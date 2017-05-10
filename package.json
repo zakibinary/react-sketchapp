@@ -39,7 +39,8 @@
     "prop-types": "^15.5.8",
     "sketch-constants": "^1.0.2",
     "sketchapp-json-flow-types": "^0.0.3",
-    "sketchapp-json-plugin": "^0.0.3"
+    "sketchapp-json-plugin": "^0.0.3",
+    "yoga-layout": "1.5.0"
   },
   "peerDependencies": {
     "react": "*",

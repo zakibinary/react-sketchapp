@@ -1,5 +1,5 @@
 import TestRenderer from 'react-test-renderer';
-import computeLayout from 'css-layout';
+import Yoga from 'yoga-layout';
 import Context from './utils/Context';
 import createStringMeasurer from './utils/createStringMeasurer';
 import type { TreeNode } from './types';
@@ -22,20 +22,25 @@ const INHERITABLE_STYLES = [
   'writingDirection',
 ];
 
-const reactTreeToFlexTree = (node: TreeNode, context: Context): TreeNode => {
+const reactTreeToYogaTree = (node: TreeNode, context: Context): Yoga.Node => {
+  const yogaNode = Yoga.Node.create();
+
   if (typeof node === 'string') {
     const textStyle = context.getInheritedStyles();
-    // string node
-    return {
+
+    const style = createStringMeasurer(node, textStyle);
+
+    yogaNode.setWidth(style.width);
+    yogaNode.setHeight(style.height);
+
+    yogaNode.data = {
       type: 'text',
-      style: {
-        measure: createStringMeasurer(node, textStyle),
-      },
+      style: { measure: style },
       textStyle,
       props: {},
       value: node,
-      children: [],
     };
+    return yogaNode;
   }
 
   const children = node.children || [];
@@ -53,21 +58,28 @@ const reactTreeToFlexTree = (node: TreeNode, context: Context): TreeNode => {
     textStyle = context.getInheritedStyles();
   }
 
-  return {
+  // TODO: map layout style to yoga methods
+
+  yogaNode.data = {
     type: node.type,
     style,
     textStyle,
     props: node.props,
     value: null,
-    children: children.map(child => reactTreeToFlexTree(child, context.forChildren())),
   };
+
+  children.forEach((child, i) =>
+    yogaNode.insertChild(reactTreeToYogaTree(child, context.forChildren()), i)
+  );
+
+  return yogaNode;
 };
 
 const buildTree = (element: React$Element<any>): TreeNode => {
   const renderer = TestRenderer.create(element);
   const json: TreeNode = renderer.toJSON();
-  const tree = reactTreeToFlexTree(json, new Context());
-  computeLayout(tree);
+  const tree = reactTreeToYogaTree(json, new Context());
+  tree.calculateLayout();
 
   return tree;
 };
