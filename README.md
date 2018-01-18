@@ -16,7 +16,12 @@ Open a new Sketch file, then in a terminal:
 git clone https://github.com/airbnb/react-sketchapp.git
 cd react-sketchapp/examples/basic-setup && npm install
 
+xcode-select --install
+sudo xcode-select --switch /Library/Developer/CommandLineTools
+
+npm run build
 npm run render
+npm run web
 ```
 
 Next, <a href="https://github.com/airbnb/react-sketchapp/tree/master/examples">check out some more examples!</a>
