@@ -11,7 +11,6 @@ type Props = {
 const buttonStyle = {
   borderRadius: 3,
   boxSizing: 'border-box',
-  color: colors.White,
   cursor: 'pointer',
   padding: spacing.Medium,
   width: 300,

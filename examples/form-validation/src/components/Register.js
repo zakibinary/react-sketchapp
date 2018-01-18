@@ -8,7 +8,7 @@ import StrengthMeter from './StrengthMeter';
 import Button from './Button';
 
 type Props = {
-  session: Session,
+  session: Session
 };
 
 const styles = StyleSheet.create({
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box',
   },
   heading: {
-    color: colors.Purple,
+    color: colors.Black,
     fontSize: typeRamp.Medium,
     fontFamily,
     fontWeight: 'bold',
@@ -29,26 +29,13 @@ const styles = StyleSheet.create({
 });
 
 const Register = ({ session }: Props) => (
-  <View style={styles.register}>
-    <Text style={styles.heading}>Register an Account</Text>
-    <TextBox
-      label={'Email'}
-      value={session.email}
-      type={'email'}
-    />
-    <TextBox
-      label={'Password'}
-      value={session.password}
-      type={'password'}
-    >
-      <StrengthMeter
-        password={session.password}
-      />
+  <View style={StyleSheet.flatten(styles.register)}>
+    <Text style={StyleSheet.flatten(styles.heading)}>Register an Account</Text>
+    <TextBox label={'Email'} value={session.email} type={'email'} />
+    <TextBox label={'Password'} value={session.password} type={'password'}>
+      <StrengthMeter password={session.password} />
     </TextBox>
-    <Button
-      label={'Register'}
-      backgroundColor={colors.Purple}
-    />
+    <Button label={'Register'} backgroundColor={colors.Green} />
   </View>
 );
 
@@ -60,4 +47,3 @@ Register.defaultProps = {
 };
 
 export default Register;
-

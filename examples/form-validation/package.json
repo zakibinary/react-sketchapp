@@ -18,16 +18,17 @@
   "license": "MIT",
   "dependencies": {
     "prop-types": "^15.5.8",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-native": "^0.42.3",
     "react-primitives": "^0.3.4",
     "react-sketchapp": "^1.0.0",
     "react-test-renderer": "^15.4.1"
   },
   "devDependencies": {
+    "@skpm/builder": "^0.2.0",
+    "babel-eslint": "^8.2.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "nwb": "^0.15.6",
-    "@skpm/builder": "^0.2.0"
+    "nwb": "^0.15.6"
   }
 }

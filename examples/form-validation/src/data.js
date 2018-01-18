@@ -1,22 +1,22 @@
 export default [
   {
-    email: 'john.hornsby@example.com',
+    email: 'afiq@binary.com',
     password: '',
   },
   {
-    email: 'john.hornsby@example.com',
-    password: 'hello',
+    email: 'afiq@binary.com',
+    password: 'hisaprokok',
   },
   {
-    email: 'john.hornsby@example.com',
-    password: '!H3ll0!',
+    email: 'afiq@binary.com',
+    password: 'H1S3PR0K0K!',
   },
   {
-    email: 'john.hornsby@example.com',
-    password: 'IL0v3ToasT!',
+    email: 'afiq@binary.com',
+    password: 'IL0v3R0K0k',
   },
   {
-    email: 'john.hornsby@example.com',
-    password: 'IRea11yL0v3ToasT!',
+    email: 'afiq@binary.com',
+    password: 'MA14B4T4NGR0kOK!',
   },
 ];
